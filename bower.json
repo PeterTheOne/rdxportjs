@@ -1,0 +1,33 @@
+{
+  "name": "rdxportjs",
+  "description": "a javascript library for the rivendell rdxport api.",
+  "main": "rdxport.js",
+  "authors": [
+    {
+      "name": "Peter Grassberger",
+      "email": "petertheone@gmail.com",
+      "url": "petergrassberger.com"
+    }
+  ],
+  "license": "AGPL-3.0",
+  "keywords": [
+    "rivendell",
+    "rdxport",
+    "api"
+  ],
+  "moduleType": [],
+  "homepage": "https://github.com/PeterTheOne/rdxportjs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1"
+  },
+  "devDependencies": {
+    "qunit": "^1.22.0"
+  }
+}
