@@ -204,16 +204,6 @@ Rdxport.Rdxport.prototype.removeCut = function(cartNumber, cutNumber, success) {
   return $.post(this.endpoint, command, success, 'xml');
 };
 
-/**
- *
- * todo: copy description and other data.
- *
- * @param sourceCartNumber
- * @param sourceCutNumber
- * @param destinationCartNumber
- * @param success
- * @returns {*}
- */
 Rdxport.Rdxport.prototype.copyCut = function(sourceCartNumber, sourceCutNumber,
                                                  destinationCartNumber, success) {
   var self = this;
@@ -234,13 +224,6 @@ Rdxport.Rdxport.prototype.copyCut = function(sourceCartNumber, sourceCutNumber,
   return returnJqXHR;
 };
 
-/**
- *
- * @param sourceCartNumber
- * @param sourceCutNumber
- * @param destinationCartNumber
- * @param success
- */
 Rdxport.Rdxport.prototype.moveCut = function(sourceCartNumber, sourceCutNumber,
                                                  destinationCartNumber, success) {
   var self = this;
@@ -364,7 +347,7 @@ Rdxport.GroupList = function() {
 
 Rdxport.Group = function(groupName, description, lowcart, highcart, normlevel, trimlevel) {
   this.xml = null;
-  // looks strange but child somehow can't do use $(this) otherwise.
+  // looks strange but child somehow can't use $(this) otherwise.
   this.$this = $(this);
 
   if (arguments.length === 1) {

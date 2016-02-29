@@ -1,17 +1,17 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-    // Project configuration.
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        qunit: {
-            all: ['test/**/*.html']
-        }
-    });
+  // Project configuration.
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    qunit: {
+      all: ['test/**/*.html']
+    }
+  });
 
-    // Load the plugin that provides the "uglify" task.
-    grunt.loadNpmTasks('grunt-contrib-qunit');
+  // Load the plugin that provides the "uglify" task.
+  grunt.loadNpmTasks('grunt-contrib-qunit');
 
-    // Default task(s).
-    grunt.registerTask('default', ['qunit']);
-    grunt.registerTask('test', 'qunit');
+  // Default task(s).
+  grunt.registerTask('default', ['qunit']);
+  grunt.registerTask('test', 'qunit');
 };
