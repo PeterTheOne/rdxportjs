@@ -31,4 +31,4 @@ or
 Development and testing
 -----------------------
 
-test with: `grunt`.
+test with: `grunt test`.

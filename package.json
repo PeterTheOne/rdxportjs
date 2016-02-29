@@ -31,6 +31,7 @@
     "grunt": "^0.4.5",
     "grunt-contrib-qunit": "^1.0.1",
     "qunit": "^0.9.0",
+    "qunitjs": "^1.22.0",
     "sinon": "^1.17.3"
   },
   "dependencies": {

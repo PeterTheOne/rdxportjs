@@ -13,4 +13,5 @@ module.exports = function(grunt) {
 
     // Default task(s).
     grunt.registerTask('default', ['qunit']);
+    grunt.registerTask('test', 'qunit');
 };
