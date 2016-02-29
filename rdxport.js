@@ -44,12 +44,17 @@ Rdxport.CMD_LISTSERVICES = 21;
 Rdxport.CMD_LISTLOG = 22;
 Rdxport.CMD_AUDIOSTORE = 23;
 
-
 Rdxport.Rdxport = function(username, token, endpoint) {
   this.username = username;
   this.token = token;
   this.endpoint = endpoint;
 };
+
+Rdxport.RdxportObject = function(username, token, endpoint) {
+  Rdxport.Rdxport.call(this, username, token, endpoint);
+};
+Rdxport.RdxportObject.prototype = Object.create(Rdxport.Rdxport.prototype);
+Rdxport.RdxportObject.prototype.constructor = Rdxport.RdxportObject;
 
 Rdxport.Rdxport.prototype.listLog = function(name, success) {
   var command = {
@@ -84,6 +89,10 @@ Rdxport.Rdxport.prototype.listGroups = function(success) {
     PASSWORD: this.token
   };
   return $.post(this.endpoint, command, success, 'xml');
+};
+
+Rdxport.RdxportObject.prototype.listGroups = function(success) {
+  Rdxport.Rdxport.call(this, success);
 };
 
 Rdxport.Rdxport.prototype.listGroup = function(groupName, success) {

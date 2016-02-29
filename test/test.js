@@ -9,11 +9,22 @@ function parseParams(str) {
   }, {});
 }
 
-QUnit.test('contruct', function (assert) {
+QUnit.test('contruct Rdxport', function (assert) {
   var username = 'hans';
   var token = 'tokener123';
   var endpoint = 'http://example/rd-bin/rdxport.cgi';
   var rdxport = new Rdxport.Rdxport(username, token, endpoint);
+
+  assert.strictEqual(rdxport.username, username);
+  assert.strictEqual(rdxport.token, token);
+  assert.strictEqual(rdxport.endpoint, endpoint);
+});
+
+QUnit.test('contruct RdxportObject', function (assert) {
+  var username = 'hans';
+  var token = 'tokener123';
+  var endpoint = 'http://example/rd-bin/rdxport.cgi';
+  var rdxport = new Rdxport.RdxportObject(username, token, endpoint);
 
   assert.strictEqual(rdxport.username, username);
   assert.strictEqual(rdxport.token, token);
@@ -26,6 +37,7 @@ QUnit.module('Rdxport', {
     this.token = 'b';
     this.endpoint = 'b';
     this.rdxport = new Rdxport.Rdxport(this.username, this.token, this.endpoint);
+    this.rdxportObject = new Rdxport.RdxportObject(this.username, this.token, this.endpoint);
     this.requests = [];
     this.xhr = sinon.useFakeXMLHttpRequest();
     this.xhr.onCreate = $.proxy(function (xhr) {
@@ -86,6 +98,18 @@ QUnit.test('listServices', function (assert) {
 
 QUnit.test('listGroups', function (assert) {
   this.rdxport.listGroups(function () {});
+
+  var request = this.requests[0];
+  assert.strictEqual(request.method, 'POST', 'Should send a POST');
+  assert.strictEqual(parseParams(request.requestBody).LOGIN_NAME, this.username);
+  assert.strictEqual(parseParams(request.requestBody).PASSWORD, this.token);
+  assert.strictEqual(request.url, this.endpoint, 'to \'c\' endpoint');
+
+  assert.equal(parseParams(request.requestBody).COMMAND, 4, 'with valid command');
+});
+
+QUnit.test('listGroups', function (assert) {
+  this.rdxportObject.listGroups(function () {});
 
   var request = this.requests[0];
   assert.strictEqual(request.method, 'POST', 'Should send a POST');
