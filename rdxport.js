@@ -401,7 +401,12 @@ Rdxport.Group.prototype.removeCart = function(cart) {
 
 Rdxport.Group.prototype.fetchCarts = function() {
   var self = this;
-  rdxport.listCarts(this.groupName, 1, function(cartsXml, status, req) {
+
+  var listCartOptions = {
+    GROUP_NAME: this.groupName,
+    INCLUDE_CUTS: 1
+  };
+  rdxport.listCarts(listCartOptions, function(cartsXml, status, req) {
     self.carts = [];
     self.cartsByNumber = {};
 
@@ -423,29 +428,29 @@ Rdxport.Group.prototype.fetchCarts = function() {
 Rdxport.Log = function(line, id, type, cartType, cartNumber, cutNumber, groupName, groupColor, title, group) {
   /*this.xml = null;
 
-  if (arguments.length === 2) {
-    this.xml = arguments[0];
-    this.line = $('line', this.xml).text();
-    this.id = $('id', this.xml).text();
-    this.type = $('type', this.xml).text();
-    this.cartType = $('cartType', this.xml).text();
-    this.cartNumber = $('cartNumber', this.xml).text();
-    this.cutNumber = $('cutNumber', this.xml).text();
-    this.groupName = $('groupName', this.xml).text();
-    this.groupColor = $('groupColor', this.xml).text();
-    this.title = $('title', this.xml).text();
-    this.group = arguments[1];
-  } else {*/
-    this.line = line;
-    this.id = id;
-    this.type = type;
-    this.cartType = cartType;
-    this.cartNumber = cartNumber;
-    this.cutNumber = cutNumber;
-    this.groupName = groupName;
-    this.groupColor = groupColor;
-    this.title = title;
-    this.group = group;
+   if (arguments.length === 2) {
+   this.xml = arguments[0];
+   this.line = $('line', this.xml).text();
+   this.id = $('id', this.xml).text();
+   this.type = $('type', this.xml).text();
+   this.cartType = $('cartType', this.xml).text();
+   this.cartNumber = $('cartNumber', this.xml).text();
+   this.cutNumber = $('cutNumber', this.xml).text();
+   this.groupName = $('groupName', this.xml).text();
+   this.groupColor = $('groupColor', this.xml).text();
+   this.title = $('title', this.xml).text();
+   this.group = arguments[1];
+   } else {*/
+  this.line = line;
+  this.id = id;
+  this.type = type;
+  this.cartType = cartType;
+  this.cartNumber = cartNumber;
+  this.cutNumber = cutNumber;
+  this.groupName = groupName;
+  this.groupColor = groupColor;
+  this.title = title;
+  this.group = group;
   //}
 };
 
@@ -468,7 +473,7 @@ Rdxport.Log.newFromXml = function(xml, group) {
 
 Rdxport.Cart = function(number, title, groupName, group) {
   this.xml = null;
-  
+
   if (arguments.length === 2) {
     this.xml = arguments[0];
     this.number = $('number', this.xml).text();
