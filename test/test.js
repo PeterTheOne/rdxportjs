@@ -108,7 +108,7 @@ QUnit.test('listGroups', function (assert) {
   assert.equal(parseParams(request.requestBody).COMMAND, 4, 'with valid command');
 });
 
-QUnit.test('listGroups', function (assert) {
+QUnit.test('listGroups Object', function (assert) {
   this.rdxportObject.listGroups(function () {});
 
   var request = this.requests[0];
