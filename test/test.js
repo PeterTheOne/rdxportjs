@@ -35,7 +35,7 @@ QUnit.module('Rdxport', {
   setup: function () {
     this.username = 'a';
     this.token = 'b';
-    this.endpoint = 'b';
+    this.endpoint = 'c';
     this.rdxport = new Rdxport.Rdxport(this.username, this.token, this.endpoint);
     this.rdxportObject = new Rdxport.RdxportObject(this.username, this.token, this.endpoint);
     this.requests = [];
