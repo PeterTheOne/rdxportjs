@@ -35,6 +35,6 @@
     "sinon": "^1.17.3"
   },
   "dependencies": {
-    "jquery": "^2.2.1"
+    "jquery": "^3.3.1"
   }
 }
